@@ -1,0 +1,16 @@
+{
+    "name": "Infra",
+    "rootNamespace": "",
+    "references": [
+        "GUID:41762c1df9850461fa6a685b1b7924aa"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
