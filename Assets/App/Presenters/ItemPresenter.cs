@@ -29,7 +29,6 @@ namespace App.Presenters
         public override void OnEnter()
         {
             itemOutPut.Initialize();
-            itemOutPut.GetBackObservable().Subscribe(_ => Transition("clicker"));
             itemOutPut.GetBuyItemObservable().Subscribe(x => Buy(x));
             var items = itemUsecase.GetItems();
             itemOutPut.SetItems(items);

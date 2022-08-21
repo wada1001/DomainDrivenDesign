@@ -20,7 +20,8 @@ namespace Infra.Repositories
 
 		public int GetCurrentCoin()
 		{
-			return gameStatus.Coin;
+			// TODO 直す
+			return (int)gameStatus.Coin;
 		}
 
 		public GameStatus GetGameStatus()

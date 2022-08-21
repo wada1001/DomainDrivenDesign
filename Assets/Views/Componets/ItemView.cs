@@ -14,7 +14,6 @@ namespace Views.Components
     public class ItemView : MonoBehaviour, IItemOutPut
     {
         [SerializeField] GameObject itemIconPrefab;
-        [SerializeField] Button back;
         [SerializeField] RectTransform itemParent;
 
         Subject<int> buySubject = new Subject<int>();
@@ -33,7 +32,6 @@ namespace Views.Components
 
         public void Terminate()
         {
-            back.onClick.RemoveAllListeners();
             buySubject.Dispose();
             this.gameObject.SetActive(false);
         }
@@ -60,11 +58,6 @@ namespace Views.Components
                 tmp.GetOnClicObservable()
                     .Subscribe(_ => buySubject.OnNext(tmpItem.ItemId));
             }
-        }
-
-		public IObservable<Unit> GetBackObservable()
-		{
-            return back.OnClickAsObservable();
         }
 
 		public IObservable<int> GetBuyItemObservable()

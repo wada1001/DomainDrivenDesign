@@ -7,13 +7,11 @@ namespace App.EntryPoints
     public abstract class State
     {
         StateMachine stateMachine;
-        protected int frames = 0;
 
         public virtual string GetKey() => "";
 
         public void Enter()
         {
-            frames = 0;
             OnEnter();
         }
 
@@ -24,7 +22,6 @@ namespace App.EntryPoints
 
         public void Update()
         {
-            frames++;
             OnUpdate();
         }
 

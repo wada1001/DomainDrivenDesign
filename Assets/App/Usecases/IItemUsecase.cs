@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Domain.Entities;
 using UnityEngine;
 
-namespace App.Usecases
+namespace App
 {
     public interface IItemUsecase
     {

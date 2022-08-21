@@ -5,19 +5,20 @@ using App.OutPuts;
 using UnityEngine;
 using UniRx;
 using Domain.Repositories;
+using App.Usecases;
 
 namespace App.Presenters
 {
     public class ClickerPresenter : State
     {
         // TODO 階層が違う。UseCaseへ
-        readonly IGameSession gameSession;
         readonly IClickerOutPut outPut;
-        
-        public ClickerPresenter(IClickerOutPut outPut, IGameSession gameSession)
+        readonly IStatusUsecase usecase;
+
+        public ClickerPresenter(IClickerOutPut outPut, IStatusUsecase usecase)
         {
             this.outPut = outPut;
-            this.gameSession = gameSession;
+            this.usecase = usecase;
         }
 
         public override string GetKey() => "clicker";
@@ -26,7 +27,6 @@ namespace App.Presenters
         {
             outPut.Initialize();
             outPut.GetClickerObservable().Subscribe(_ => OnClicker());
-            outPut.GetToItemObservable().Subscribe(_ => Transition("item"));
         }
 
         public override void OnExit()
@@ -36,16 +36,12 @@ namespace App.Presenters
 
         public override void OnUpdate()
         {
-            // TODO 計算用のUsecaseを通す
-            if (frames % 50 == 0) gameSession.AddCoin(gameSession.GetGameStatus().SecondPerCoin);
-
-            if (frames % 3 == 0) outPut.SetCurrentCoin(gameSession.GetCurrentCoin());
+            // todo nothing to do ?
         }
 
         public void OnClicker()
         {
-            // TODO 計算用のUsecaseを通す
-            gameSession.AddCoin(gameSession.GetGameStatus().TapPerCoin);
+            usecase.AddSingle();
         }
     }
 }

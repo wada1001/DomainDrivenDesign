@@ -1,16 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Numerics;
 
 namespace Domain.Entities
 {
     public class GameStatus
     {
-        public int Coin;
-
-        // TODO 多倍長整数にする
+        public BigInteger Coin;
         public int TapPerCoin = 1;
         public int SecondPerCoin = 0;
-
     }
 }

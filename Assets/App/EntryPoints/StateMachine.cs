@@ -11,6 +11,7 @@ namespace App.EntryPoints
         Dictionary<string, State> dict = new Dictionary<string, State>();
 
         State current;
+        int frames;
 
         public StateMachine(IReadOnlyList<State> states)
         {
@@ -33,6 +34,7 @@ namespace App.EntryPoints
 
         public void FixedTick()
         {
+            frames++;
             if (current == null) return;
 
             current.Update();
@@ -47,6 +49,9 @@ namespace App.EntryPoints
             current = dict[key];
             current.Enter();
         }
+
+        public int GetFrames() => frames;
+        public void ResetFrames() => frames = 0;
 
         bool ContainsKey(string key)
         {
